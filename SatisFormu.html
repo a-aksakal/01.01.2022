@@ -1,0 +1,171 @@
+<html>
+    <head>
+        <title>Satış Formu</title>
+        <link rel="stylesheet" href="css/myStyle.css">
+        <script language="JavaScript">
+          function Save()
+          {
+              var salesDate = document.getElementById("dtpSalesDate").value;
+              var deliveryDate = document.getElementById("dtpDeliveryDate").value;
+              var customer = document.getElementById("cmbCustomer").selectedOptions[0].innerHTML;
+              var project = document.getElementById("cmbProject").selectedOptions[0].innerHTML;
+              var apartment = document.getElementById("cmbApartment").selectedOptions[0].innerHTML;
+              var suite = document.getElementById("cmbSuite").selectedOptions[0].innerHTML;
+              var price1 = document.getElementById("txtPrice1").value;
+              var price2 = document.getElementById("txtPrice2").value;
+              var employee = document.getElementById("cmbEmployee").selectedOptions[0].innerHTML;
+              var notes = document.getElementById("txtNotes").value;
+              var radioList=document.getElementsByName("rdCredit");
+              var chkRequestList=document.getElementsByName("chkRequest");
+              var requestResult="";
+              for(var i=0; i<radioList.length;i++)
+              {
+                  if(radioList[i].checked==true)
+                  {
+                      var creditResult=radioList[i].labels[0].textContent;
+                      break;
+                  }
+                  else
+                  {
+                      continue;
+                  }
+              }
+              for(var i=0;i<chkRequestList.length;i++)
+              {
+                  if(chkRequestList[i].checked==true)
+                  {
+                      requestResult +=chkRequestList[i].nextElementSibling.innerHTML+" ";
+                  }
+              }
+              window.alert(" Satış Tarihi: "+salesDate+"\n Teslim tarihi: "+deliveryDate+"\n Müşteri: "+customer+
+                           "\n Proje: "+project+"\n Apartman: "+apartment+"\n Daire: "+suite+"\n Fiyat: "+price1+","+price2+" TL"+
+                           "\n Çalışan: "+employee+"\n Notlar: "+notes+
+                           "\n Kredi Durumu: "+creditResult +"\n Ek Talepler: "+requestResult)
+                  
+              /*if(document.satisFormu.rdCredit[0].checked==true)
+             {
+                 var result=document.getElementById("rdCredit1").nextElementSibling.innerHTML;
+                  window.alert(result);
+             }
+             else if(document.satisFormu.rdCredit[1].checked==true)
+             {
+              var result=document.getElementById("rdCredit2").nextElementSibling.innerHTML;
+                  window.alert(result);
+             }*/
+              
+          }
+
+      </script>
+    </head>
+
+    <body>
+        <header>
+            <div class="divheader">
+              <a href="#">
+                <img src="images/sale.svg" width="64px" height="64px"></img>
+              </a>
+              <ul>
+                <li>Ana Sayfa</li>
+                <li>Satış Formu</li>
+                <li>Panel</li>
+                <li>Çıkış</li>
+              </ul>
+            </div>
+        </header>
+        <center>
+          <form>
+            <table class="tableclass">
+              <tr>
+                <td class="labels">Satış Tarihi: </td><td ><input type="date" name="dtpSalesDate" id="dtpSalesDate" /></td>
+              </tr>
+              <tr>
+                <td class="labels">Teslim Tarihi: </td><td><input type="date" name="dtpDeliveryDate" id="dtpDeliveryDate" /></td>
+              </tr>
+                <tr>
+                  <td class="labels">Müşteri:</td><td>
+                    <select name="cmbCustomer" id="cmbCustomer">
+                      <option value="0" selected hidden>Lütfen Seçiniz...</option>
+                      <option value="1">Okancan Okan</option>
+                      <option value="2">Muhittin Timur</option>
+                      <option value="3">Onur Kulabaş</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labels">Proje:</td>
+                  <td>
+                    <select name="cmbProject" id="cmbProject">
+                      <option value="0" selected hidden>Lütfen Seçiniz...</option>
+                      <option value="1">34 İstanbul</option>
+                      <option value="2">Yeni Mahalle</option>
+                      <option value="3">Şehr-i Plaza</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="labels">Apartman:</td>
+                  <td>
+                      <select name="cmbApartment" id="cmbApartment">
+                          <option value="0" selected hidden>Lütfen Seçiniz...</option>
+                          <option value="1">A Blok</option>
+                          <option value="2">B Blok</option>
+                          <option value="3">C Blok</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="labels">Daire:</td>
+                  <td>
+                      <select name="cmbSuite" id="cmbSuite">
+                          <option value="0" selected hidden>Lütfen Seçiniz...</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="labels">Fiyat:</td>
+                  <td>
+                      <input type="text" name="txtPrice1" id="txtPrice1" style="width:20%;"/>,<input type="text" name="txtPrice2" id="txtPrice2" style="width:8%;"/>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="labels">Çalışan:</td>
+                  <td>
+                      <select name="cmbEmployee" id="cmbEmployee">
+                          <option value="0" selected hidden>Lütfen Seçiniz...</option>
+                          <option value="1">Alican Aksakal</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="labels">Notlar:</td>
+                  <td><textarea name="txtNotes" id="txtNotes" style="margin-left: 10px; width:51.5%; height: 70px;"></textarea></td>
+              </tr>
+              <tr>
+                  <td class="labels">Kredi Kullanıldı mı?</td>
+                  <td>
+                      <input type="radio" name="rdCredit" id="rdCredit1" value="5" style="width: 5%; margin: 0 0 0 10px;"/><label for="rdCredit1">Evet</label>
+                      <input type="radio" name="rdCredit" id="rdCredit2" value="6" style="width: 5%; margin: 0 0 0 10px;"/><label for="rdCredit2">Hayır</label>
+                  </td>
+              </tr>
+              <tr>
+                  <td class="labels">Ek Talepler:</td>
+                  <td>
+                      <input type="checkbox" name="chkRequest" id="chkMobilya" value="1" style="width: 5%; margin: 0 0 0 10px;"/><label>Mobilya</label>
+                      <br/>
+                      <input type="checkbox" name="chkRequest" id="chkKlima" value="2" style="width: 5%; margin: 0 0 0 10px;"/><label>Klima</label>
+                  </td>
+              </tr>
+              <tr>
+                  <td colspan="2" align="center">
+                      
+                      <input type="button" name="btnSave" id="btnSave" value="Kaydet" class="savebutton" onclick="Save()"/>
+                  </td>
+              </tr>
+            </table>
+          </form>
+        </center>
+    </body>
+</html>
